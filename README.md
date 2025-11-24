@@ -1,141 +1,75 @@
-<details>
-<summary>ENG (English Version)</summary>
+<details> <summary>ENG (English Version)</summary>
 
-# Linux Programming
+## Chapter 1 – Linux Installation and Basic Usage
 
-## Unit 1: Linux Installation and Basic Usage
-- 01 Operating System Overview
-- 02 Linux Basics
-- 03 Building a Linux Practice Environment
-- 04 Rocky Linux Window Basic Usage
-- 05 Linux Command Usage
+**Section 1: Operating System Overview**
+- Definition and Purpose of OS: Interface between hardware and applications; provides user convenience and efficient resource management
+- Key Functions: Process management, memory management, file system management, I/O management, resource protection, user interface provision
+- OS Components: Kernel, file system, device drivers, system calls, user interface
+- Kernel Architecture: Monolithic kernels (fast, less stable) vs. Microkernels (stable, slower)
+- OS History: From 1940s-1950s batch systems through Unix (1970s) to modern Linux and mobile systems
 
-## Unit 2: Directory and File Usage
-- 01 Linux Files and Directories
-- 02 Directory-Related Commands
-- 03 File-Related Commands
+**Section 2: Linux Fundamentals**
+- Market Share: Dominant in servers and supercomputers; Android (Linux-based) holds 70.8% of mobile market
+- Advantages: Unix compatibility, runs across diverse platforms (PCs, servers, embedded systems, mobile)
+- Unix and Linux Relationship: Linux is Unix-compatible; Unix developed in 1969, reimplemented in C in 1971
+- Linux History: Developed by Linus Torvalds in late 1980s; first released August 1991; current version 6.17.4 (October 2025)
+- GNU Project and GPL: Started 1985 by Richard Stallman; GPL established 1989; guarantees software freedom and open-source principles
+- Linux Distributions: Multiple distributions; categorized as Debian, Slackware, Red Hat families (Ubuntu, Rocky Linux, RHEL)
+- Linux Characteristics: Open-source, free, Unix-compatible, widely used as server OS, provides convenient GUI
+- Linux Structure: Kernel (process/memory/file system management), Shell (user interface), Applications (tools and programs)
 
-## Unit 3: File Access Permission Management
-- 01 File Access Permissions
-- 02 Changing File Access Permissions Using Symbols
-- 03 Changing File Access Permissions Using Numbers
-- 04 Basic Access Permission Settings
-- 05 Special Access Permission Settings
+**Section 3: Linux Experimental Environment Setup**
+- Virtual Machines: Allows running Linux on existing systems without separate hardware
+- Installation Steps: Download VMware, install, create virtual machine, configure Rocky Linux, download ISO, complete installation
+- Linux Partitions: Essential (root /, boot /boot, swap); Optional (/usr, /var, /tmp, /home)
 
-## Unit 4: Document Editing
-- 01 Linux Document Editors
-- 02 Vi Usage
-- 03 Vi Environment Settings
+**Section 4: Linux Window Basic Usage**
+- Rocky Linux Window Composition: Top bar (current activity, date/time, notifications, settings), file manager, text editor (gedit)
+- Korean Input Setup: Configured through keyboard settings
 
-## Unit 5: Shell Usage
-
-
-## Unit 6: Process Management
-
-
-## Unit 7: Linux Boot and Shutdown
-
-
-## Unit 8: Software Management
-
-
-## Unit 9: User Management
-
-
-## Unit 10: File System and Disk Management
-
-
-## Unit 11: Network Configuration
-
-
-## Unit 12: Remote Access and FTP
-
-
-## Unit 13: Database Server and Web Server
-- 01 Database
-- 02 MariaDB Installation and Usage
-
-## Unit 14: NFS and Samba
-
-
-## Unit 15: Linux Security Basics
-
-
-## Unit 16: Virtualization Services
-
-
-## Unit 17: Comprehensive Practice and Individual Projects
-
+**Section 5: Linux Command Usage**
+- Terminal Operations: Start via [Current Activity] → [Terminal]; end via [×] button, exit command, or Ctrl+d
+- Command Structure: `command [options] [arguments]`
+- Basic Commands: date (display current date/time), clear (clear terminal), man (display manual pages), passwd (change password)
+- Command Line Editing: Backspace/Delete for character deletion, Ctrl+w for word deletion, Ctrl+u for line deletion
 
 </details>
 
-<details>
-<summary>KOR (한국어 버전)</summary>
+<details> <summary>KOR (한국어 버전)</summary>
 
-# 리눅스 프로그래밍
+## 1장 – 리눅스 설치와 기본 사용법
 
-## 단원 1: 리눅스 설치와 기본 사용법
-- 01 운영체제 개요
-- 02 리눅스 기초
-- 03 리눅스 실습 환경 구축
-- 04 리눅스 윈도 기본 사용법
-- 05 리눅스 명령 사용법
+**운영체제 개요**
+- 운영체제의 정의와 목적: 하드웨어와 응용 프로그램 간의 인터페이스; 사용자 편의성과 자원 효율 관리 제공
+- 주요 기능: 프로세스 관리, 메모리 관리, 파일 시스템 관리, 입출력 관리, 자원 보호, 사용자 인터페이스 제공
+- 운영체제 구성요소: 커널, 파일 시스템, 디바이스 드라이버, 시스템 호출, 사용자 인터페이스
+- 커널 구현 방식: 모놀리식 커널 (빠르고 안정성 낮음) vs. 마이크로 커널 (안정적이고 느림)
+- 운영체제 역사: 1940년대 후반 일괄처리 시스템부터 1970년대 Unix, 현대의 Linux와 모바일 시스템까지
 
-## 단원 2: 디렉터리와 파일 사용법
-- 01 리눅스의 파일과 디렉터리
-- 02 디렉터리 관련 명령
-- 03 파일 관련 명령
+**리눅스 기초**
+- 시장 점유율: 서버와 슈퍼컴퓨터에서 압도적; Android (Linux 기반)는 모바일 시장 70.8% 점유
+- 장점: Unix 호환성, 다양한 플랫폼에서 실행 가능 (PC, 서버, 임베디드 시스템, 모바일)
+- Unix와 Linux의 관계: Linux는 Unix 호환; Unix는 1969년 개발, 1971년 C 언어로 재개발
+- Linux 역사: Linus Torvalds가 1980년대 후반 개발; 1991년 8월 처음 공개; 현재 버전 6.17.4 (2025년 10월)
+- GNU 프로젝트와 GPL: 1985년 Richard Stallman 시작; GPL은 1989년 제정; 소프트웨어 자유와 오픈소스 원칙 보장
+- Linux 배포판: 다양한 배포판; Debian, Slackware, Red Hat 계열로 분류 (Ubuntu, Rocky Linux, RHEL)
+- Linux의 특징: 공개 소프트웨어, 무료, Unix 호환성, 서버 OS로 광범위 사용, 편리한 GUI 제공
+- Linux의 구조: 커널 (프로세스/메모리/파일 시스템 관리), 셸 (사용자 인터페이스), 응용 프로그램 (도구 및 프로그램)
 
-## 단원 3: 파일 접근 권한 관리
-- 01 파일 접근 권한
-- 02 기호를 이용한 파일 접근 권한 변경
-- 03 숫자를 이용한 파일 접근 권한 변경
-- 04 기본 접근 권한 설정
-- 05 특수 접근 권한 설정
+**리눅스 실습 환경 구축**
+- 가상머신: 기존 시스템에서 별도 하드웨어 없이 Linux 실행 가능
+- 설치 절차: VMware 다운로드, 설치, 가상머신 생성, Rocky Linux 구성, ISO 다운로드, 설치 완료
+- 리눅스 파티션: 필수 (root /, boot /boot, swap); 선택 (/usr, /var, /tmp, /home)
 
-## 단원 4: 문서 편집
-- 01 리눅스의 문서 편집기
-- 02 vi 사용법
-- 03 vi 환경 설정
+**리눅스 윈도 기본 사용법**
+- Rocky Linux 윈도 구성: 상단 바 (현재 활동, 날짜/시간, 알림, 설정), 파일 관리자, 텍스트 편집기 (gedit)
+- 한글 입력 설정: 키보드 설정을 통해 구성
 
-## 단원 5: 셸 사용법
-
-
-## 단원 6: 프로세스 관리
-
-
-## 단원 7: 리눅스의 부팅과 종료
-
-
-## 단원 8: 소프트웨어 관리
-
-
-## 단원 9: 사용자 관리
-
-
-## 단원 10: 파일 시스템과 디스크 관리
-
-
-## 단원 11: 네트워크 설정
-
-
-## 단원 12: 원격 접속과 FTP
-
-
-## 단원 13: DB 서버와 웹 서버
-- 01 데이터베이스
-- 02 MariaDB 설치와 사용
-
-## 단원 14: NFS와 삼바
-
-
-## 단원 15: 리눅스 보안의 기초
-
-
-## 단원 16: 가상화 서비스
-
-
-## 단원 17: 종합 실습 및 개별 프로젝트
-
+**리눅스 명령 사용법**
+- 터미널 작동: [현재 활동] → [터미널]에서 시작; [×] 버튼, exit 명령, 또는 Ctrl+d로 종료
+- 명령의 구조: `명령 [옵션] [인자]`
+- 기본 명령어: date (현재 날짜/시간 표시), clear (터미널 지우기), man (매뉴얼 표시), passwd (암호 변경)
+- 명령행 편집: Backspace/Delete로 문자 삭제, Ctrl+w로 단어 삭제, Ctrl+u로 행 삭제
 
 </details>
