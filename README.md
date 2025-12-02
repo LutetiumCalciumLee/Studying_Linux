@@ -1,141 +1,88 @@
-<details>
-<summary>ENG (English Version)</summary>
 
-# Linux Programming
+<details> <summary>ENG (English Version)</summary>
 
-## Unit 1: Linux Installation and Basic Usage
-- 01 Operating System Overview
-- 02 Linux Basics
-- 03 Building a Linux Practice Environment
-- 04 Rocky Linux Window Basic Usage
-- 05 Linux Command Usage
+## Chapter 7 – Linux Boot and Shutdown
 
-## Unit 2: Directory and File Usage
-- 01 Linux Files and Directories
-- 02 Directory-Related Commands
-- 03 File-Related Commands
+**Section 1: Linux System Boot Process**
+- Boot Definition: Spans from power-on through kernel initialization to login prompt display; divided into hardware boot and Linux OS boot phases.
+- BIOS Stage: First activates when power is turned on, checks connected hardware, loads 512B Master Boot Record (MBR) from boot disk, and loads the bootloader.
+- Bootloader Role: Finds and loads the Linux kernel from disk into memory; typically offers menu to select among multiple OSes; GRUB is the standard Linux bootloader.
+- Kernel Initialization: After bootloader loads kernel, kernel checks hardware devices, creates kernel processes and threads for internal operations (displayed in brackets), maintains low PID numbers.
+- systemd Service Stage: After kernel initialization, systemd activates various system services; boot progress shown via boot splash image (Alt+d toggles message display); services show OK or FAIL status; messages accessible via dmesg or /var/log/boot.log.
+- Init vs systemd: Traditionally init was PID 1; now systemd replaces init in modern systems like Rocky Linux; systemd then starts GDM (Gnome Display Manager) for login prompt.
 
-## Unit 3: File Access Permission Management
-- 01 File Access Permissions
-- 02 Changing File Access Permissions Using Symbols
-- 03 Changing File Access Permissions Using Numbers
-- 04 Basic Access Permission Settings
-- 05 Special Access Permission Settings
+**Section 2: systemd Services**
+- Init Process and Runlevels: Init (PID 1) was the ancestor of all processes; executed shell scripts from /etc/rc.d/init.d; system state divided into 7 runlevels (0-6, plus S).
+- systemd Advantages: Socket-based, shell-independent boot, mount control, fsck control, state snapshots, SELinux integration, signal delivery, safe session shutdown.
+- systemd Units: systemd manages the system via units (named as service.type), stored as configuration files in /usr/lib/systemd/system and /etc/systemd/system.
+- systemctl Command: Used to manage services; can start, stop, restart, and check status of units; unit type suffix can be omitted.
+- Viewing Units: systemctl (no args) shows active units; systemctl -a shows all; systemctl -t type filters by type.
+- Unit Status: systemctl status servicename shows detailed status (PID, active/inactive).
+- Starting/Stopping Services: systemctl start/stop/restart servicename controls services; requires root privileges.
+- Target Units: systemd replaces runlevels with target files (graphical.target, multi-user.target, etc.); runlevelX.target files are symlinks for compatibility.
+- Default Target: systemctl get-default shows current target; set-default changes default boot target.
+- Changing Target: systemctl isolate target changes the current target; init 3 or telinit 3 changes to runlevel 3 (multi-user.target).
+- Single-User Mode: systemctl isolate rescue.target switches to single-user mode (runlevel 1) for system repairs; requires root access only.
 
-## Unit 4: Document Editing
-- 01 Linux Document Editors
-- 02 Vi Usage
-- 03 Vi Environment Settings
+**Section 3: System Shutdown**
+- Shutdown Methods: shutdown command, changing runlevel to 0/6, halt, poweroff, reboot, or power button (last resort only).
+- shutdown Command: Most proper shutdown method; offers various options for timing and messaging.
+- Immediate Shutdown: shutdown -h now terminates immediately.
+- Delayed Shutdown with Message: shutdown -h +minutes "message" gives users time; common practice is shutdown -h +2.
+- System Reboot: shutdown -r now for immediate reboot; shutdown -r +minutes schedules reboot.
+- Cancel Shutdown: shutdown -c cancels a pending shutdown.
+- Message Only: shutdown -k +time sends termination message without actually shutting down (for testing).
+- Alt Methods: halt, poweroff, reboot commands offer quick shutdown but less gracefully; runlevel 0 halts, runlevel 6 reboots.
 
-## Unit 5: Shell Usage
+**Section 4: Daemon Processes**
+- Daemon Concept: Background services that provide specific functions and respond to requests (systemd manages most modern daemons).
 
-
-## Unit 6: Process Management
-
-
-## Unit 7: Linux Boot and Shutdown
-
-
-## Unit 8: Software Management
-
-
-## Unit 9: User Management
-
-
-## Unit 10: File System and Disk Management
-
-
-## Unit 11: Network Configuration
-
-
-## Unit 12: Remote Access and FTP
-
-
-## Unit 13: Database Server and Web Server
-- 01 Database
-- 02 MariaDB Installation and Usage
-
-## Unit 14: NFS and Samba
-
-
-## Unit 15: Linux Security Basics
-
-
-## Unit 16: Virtualization Services
-
-
-## Unit 17: Comprehensive Practice and Individual Projects
-
+**Section 5: Boot Loader**
+- GRUB: Standard Linux bootloader providing menu selection and kernel loading.
+- Boot Sequence: BIOS → MBR → Bootloader → Kernel → systemd → Services → Login.
 
 </details>
 
-<details>
-<summary>KOR (한국어 버전)</summary>
+<details> <summary>KOR (한국어 버전)</summary>
 
-# 리눅스 프로그래밍
+## 7장 – 리눅스의 부팅과 종료
 
-## 단원 1: 리눅스 설치와 기본 사용법
-- 01 운영체제 개요
-- 02 리눅스 기초
-- 03 리눅스 실습 환경 구축
-- 04 리눅스 윈도 기본 사용법
-- 05 리눅스 명령 사용법
+**리눅스 시스템의 부팅**
+- 부팅의 정의: 전원 켜짐부터 로그인 프롬프트까지의 과정을 말하며, 하드웨어 부팅과 Linux 부팅 두 단계로 나뉜다.
+- BIOS 단계: 전원 켜지면 최초 동작, 하드웨어 상태 확인, 부트 디스크에서 512B의 마스터 부트 레코드(MBR) 로딩, 부트 로더를 메모리에 적재.
+- 부트 로더 역할: 디스크에서 리눅스 커널을 찾아 메모리에 로딩하며, 다중 OS 선택 메뉴 제공, GRUB이 표준 부트 로더.
+- 커널 초기화: 부트 로더가 커널을 로딩하면 하드웨어 장치 점검, 커널 프로세스·스레드 생성으로 메모리·디바이스 관리 수행, 대괄호[ ]로 표시되고 낮은 PID 할당.
+- systemd 서비스 단계: 커널 초기화 후 다양한 시스템 서비스 활성화, 부트 스플래시 이미지 표시(Alt+d로 메시지 전환), 각 서비스 상태(OK/FAIL) 표시, dmesg 명령이나 /var/log/boot.log로 확인 가능.
+- Init vs systemd: 전통적으로 init가 PID 1이었으나, Rocky Linux 같은 현대 시스템에서는 systemd로 대체되고, GDM(그놈 디스플레이 매니저)을 실행해 로그인 프롬프트 표시.
 
-## 단원 2: 디렉터리와 파일 사용법
-- 01 리눅스의 파일과 디렉터리
-- 02 디렉터리 관련 명령
-- 03 파일 관련 명령
+**systemd 서비스**
+- Init 프로세스와 런레벨: Init는 모든 프로세스의 조상(PID 1), /etc/rc.d/init.d에서 셸 스크립트 실행, 시스템 상태를 7개의 런레벨(0~6, S)로 구분.
+- systemd 장점: 소켓 기반, 셸 독립 부팅, 마운트·fsck 제어, 상태 스냅숏, SELinux 통합, 시그널 전달, 안전한 세션 종료.
+- systemd 유닛: systemd가 서비스명.종류 형태로 유닛 관리, /usr/lib/systemd/system과 /etc/systemd/system에 설정 파일 저장.
+- systemctl 명령: 서비스 시작·종료·재시작·상태 확인에 사용, 유닛 종류 접미사 생략 가능, root 권한 필요.
+- 유닛 조회: systemctl (옵션 없음)은 활성 유닛만 표시, -a는 전체, -t type으로 종류별 필터링.
+- 유닛 상태: systemctl status 서비스명으로 상세 정보(PID, active/inactive) 확인.
+- 서비스 제어: systemctl start/stop/restart 서비스명으로 제어, root 권한 필수.
+- Target 유닛: systemd는 런레벨을 target 파일로 대체(graphical.target, multi-user.target 등), runlevelX.target은 호환성을 위한 심볼릭 링크.
+- 기본 Target: systemctl get-default로 현재 target 확인, set-default로 기본 부팅 target 변경.
+- Target 변경: systemctl isolate target으로 현재 target 전환, init 3이나 telinit 3으로 런레벨 3(multi-user.target) 변경 가능.
+- 단일 사용자 모드: systemctl isolate rescue.target으로 단일 사용자 모드(런레벨 1)로 전환해 시스템 점검, root만 접근 가능, reboot나 systemctl default로 다중 사용자 모드 복귀.
 
-## 단원 3: 파일 접근 권한 관리
-- 01 파일 접근 권한
-- 02 기호를 이용한 파일 접근 권한 변경
-- 03 숫자를 이용한 파일 접근 권한 변경
-- 04 기본 접근 권한 설정
-- 05 특수 접근 권한 설정
+**리눅스 시스템의 종료**
+- 종료 방법: shutdown 명령, 런레벨 0/6 변경, halt, poweroff, reboot, 전원 버튼(최후의 수단).
+- shutdown 명령: 가장 정상적인 종료 방법, 다양한 옵션 제공.
+- 즉시 종료: shutdown -h now로 즉시 종료.
+- 지연 종료 및 메시지: shutdown -h +분 "메시지"로 시간 확보 후 메시지 전송, shutdown -h +2가 일반적 관행.
+- 시스템 재시작: shutdown -r now로 즉시 재부팅, shutdown -r +분으로 예약 재부팅.
+- 종료 취소: shutdown -c로 대기 중인 종료 취소.
+- 메시지만 전송: shutdown -k +시간으로 실제 종료 없이 메시지만 전송(테스트용).
+- 다른 방법: halt·poweroff·reboot 명령으로 빠른 종료 가능하나 우아하지 못함, 런레벨 0(종료), 런레벨 6(재부팅).
 
-## 단원 4: 문서 편집
-- 01 리눅스의 문서 편집기
-- 02 vi 사용법
-- 03 vi 환경 설정
+**데몬 프로세스**
+- 데몬 개념: 특정 서비스를 제공하는 백그라운드 프로세스로, systemd가 대부분의 현대 데몬을 관리.
 
-## 단원 5: 셸 사용법
+**부트 로더**
+- GRUB: 리눅스의 표준 부트 로더로 OS 선택 메뉴와 커널 로딩 기능 제공.
+- 부팅 순서: BIOS → MBR → 부트 로더 → 커널 → systemd → 서비스 → 로그인.
 
-
-## 단원 6: 프로세스 관리
-
-
-## 단원 7: 리눅스의 부팅과 종료
-
-
-## 단원 8: 소프트웨어 관리
-
-
-## 단원 9: 사용자 관리
-
-
-## 단원 10: 파일 시스템과 디스크 관리
-
-
-## 단원 11: 네트워크 설정
-
-
-## 단원 12: 원격 접속과 FTP
-
-
-## 단원 13: DB 서버와 웹 서버
-- 01 데이터베이스
-- 02 MariaDB 설치와 사용
-
-## 단원 14: NFS와 삼바
-
-
-## 단원 15: 리눅스 보안의 기초
-
-
-## 단원 16: 가상화 서비스
-
-
-## 단원 17: 종합 실습 및 개별 프로젝트
-
-
-</details>
+</details></parameter>
