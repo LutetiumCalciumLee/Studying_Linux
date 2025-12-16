@@ -1,141 +1,57 @@
-<details>
-<summary>ENG (English Version)</summary>
+<details> <summary>ENG (English Version)</summary>
 
-# Linux Programming
+## Chapter 16 – Virtualization Services
 
-## Unit 1: Linux Installation and Basic Usage
-- 01 Operating System Overview
-- 02 Linux Basics
-- 03 Building a Linux Practice Environment
-- 04 Rocky Linux Window Basic Usage
-- 05 Linux Command Usage
+**Section 1: Virtualization Service Overview**
+- Virtualization Concept: Divides physical resources (CPU, memory, disk) into multiple virtual resources or aggregates multiple physical resources into a single virtual system.
+- Virtualization Types: Virtual Machines (VMs—full OS isolation, e.g., VMware Player), Container Virtualization (app-level isolation, e.g., Docker/Kubernetes), Network Virtualization (VPNs), Storage Virtualization (LVM).
+- Use Cases: Improves resource utilization, enables diverse OS environments, provides scalability, reduces costs (hardware, power, space).
+- Hypervisor Type 1: Bare-metal (direct hardware access)—VMware vSphere/ESXi, Hyper-V, Xen, KVM; Full Virtualization (no guest OS mods, slower via DOM0 mediation), Paravirtualization (hypercalls, faster but guest mods needed).
+- Hypervisor Type 2: Hosted (runs on host OS)—VMware Workstation, VirtualBox; I/O goes through host OS causing performance overhead.
+- Container Advantages: Lightweight (shares host kernel, no guest OS), portable (isolated environments), high performance (direct resource access).
 
-## Unit 2: Directory and File Usage
-- 01 Linux Files and Directories
-- 02 Directory-Related Commands
-- 03 File-Related Commands
+**Section 2: Virtual Machine Practice**
+- KVM Overview: Kernel-based Virtual Machine (Linux kernel 2.6.20+); Type 1 hypervisor requiring CPU virtualization (Intel VT-x/AMD-V); uses KVM (kernel module), QEMU (emulator), Virt-Manager (GUI).
+- KVM Setup: Enable CPU virtualization in BIOS/VM settings; install KVM/QEMU/Virt-Manager packages (+EPEL repo); verify lsmod | grep kvm; start libvirtd service; create network bridge (br0).
+- Bridge Network: nmcli creates br0 bridge (ens160 slave), assigns IP/gateway/DNS; virbr0.xml enables bridge for VMs; restart libvirtd.
+- VM Creation: virt-manager GUI—select Rocky Linux ISO, set RAM/CPU/disk (10GB), customize name; installs guest OS like physical machine.
+- Cockpit Console: Web-based management (dnf install cockpit cockpit-machines); access https://IP:9090; manages firewall, users, network, VMs, updates, containers, logs, monitoring.
 
-## Unit 3: File Access Permission Management
-- 01 File Access Permissions
-- 02 Changing File Access Permissions Using Symbols
-- 03 Changing File Access Permissions Using Numbers
-- 04 Basic Access Permission Settings
-- 05 Special Access Permission Settings
-
-## Unit 4: Document Editing
-- 01 Linux Document Editors
-- 02 Vi Usage
-- 03 Vi Environment Settings
-
-## Unit 5: Shell Usage
-
-
-## Unit 6: Process Management
-
-
-## Unit 7: Linux Boot and Shutdown
-
-
-## Unit 8: Software Management
-
-
-## Unit 9: User Management
-
-
-## Unit 10: File System and Disk Management
-
-
-## Unit 11: Network Configuration
-
-
-## Unit 12: Remote Access and FTP
-
-
-## Unit 13: Database Server and Web Server
-- 01 Database
-- 02 MariaDB Installation and Usage
-
-## Unit 14: NFS and Samba
-
-
-## Unit 15: Linux Security Basics
-
-
-## Unit 16: Virtualization Services
-
-
-## Unit 17: Comprehensive Practice and Individual Projects
-
+**Section 3: Container Virtualization Practice**
+- Docker: Container platform; Docker Image (packaged app+runtime), Docker Hub (hub.docker.com repository).
+- Docker Install: Add CentOS Docker repo, dnf install docker-ce, systemctl enable/start docker; docker --version verifies.
+- Docker Test: docker run hello-world confirms operation; docker pull nginx downloads image; docker run -p 9511:80 nginx maps port.
+- Docker Commands: docker images (list images), docker ps (running containers), docker pull/run for deployment.
+- Conda: Python environment manager; download Miniconda, bash installer, conda --version; create env (conda create -n yolo_env python=3.10), activate/deactivate, pip install ultralytics.
+- YOLO Example: detection.py uses YOLOv8 for object detection on images (test.jpg → result_output.jpg), prints classes/confidence.
 
 </details>
 
-<details>
-<summary>KOR (한국어 버전)</summary>
+<details> <summary>KOR (한국어 버전)</summary>
 
-# 리눅스 프로그래밍
+## 16장 – 가상화 서비스
 
-## 단원 1: 리눅스 설치와 기본 사용법
-- 01 운영체제 개요
-- 02 리눅스 기초
-- 03 리눅스 실습 환경 구축
-- 04 리눅스 윈도 기본 사용법
-- 05 리눅스 명령 사용법
+**가상화 서비스 개요**
+- 가상화 개념: 물리 자원(CPU·메모리·디스크)을 여러 가상 자원으로 분할하거나 여러 물리 자원을 하나의 가상 시스템으로 통합.
+- 가상화 유형: 가상머신(VM—전체 OS 격리, VMware Player), 컨테이너 가상화(앱 수준 격리, Docker/Kubernetes), 네트워크 가상화(VPN), 스토리지 가상화(LVM).
+- 활용 용도: 자원 활용도 향상, 다양한 OS 환경 구축, 확장성(트래픽 대응), 비용 절감(하드웨어·전력·공간).
+- 하이퍼바이저 유형 1: 베어메탈(직접 하드웨어 접근)—vSphere/ESXi, Hyper-V, Xen, KVM; 전가상화(게스트 OS 수정 불필요, DOM0 중재로 느림), 반가상화(하이퍼콜, 빠름 but 수정 필요).
+- 하이퍼바이저 유형 2: 호스트 기반(호스트 OS 위)—Workstation, VirtualBox; I/O가 호스트 OS 경유로 성능 저하.
+- 컨테이너 장점: 경량(호스트 커널 공유), 이식성(격리 환경), 고성능(직접 자원 접근).
 
-## 단원 2: 디렉터리와 파일 사용법
-- 01 리눅스의 파일과 디렉터리
-- 02 디렉터리 관련 명령
-- 03 파일 관련 명령
+**가상머신 실습**
+- KVM 개요: 리눅스 커널 가상화 모듈(2.6.20+), 유형 1 하이퍼바이저(VT-x/AMD-V 필수); KVM(커널), QEMU(에뮬레이터), Virt-Manager(GUI).
+- KVM 구축: BIOS/VM에서 가상화 활성화, KVM/QEMU/Virt-Manager 설치(EPEL 저장소), lsmod | grep kvm 확인, libvirtd 서비스 시작, 네트워크 브릿지(br0) 생성.
+- 브릿지 네트워크: nmcli로 br0 생성(ens160 슬레이브), IP/게이트웨이/DNS 설정, virbr0.xml 활성화, libvirtd 재시작.
+- VM 생성: virt-manager에서 Rocky ISO 선택, RAM/CPU/디스크(10GB) 설정, 이름 지정 후 물리 설치와 동일하게 진행.
+- Cockpit 콘솔: 웹 관리(dnf cockpit cockpit-machines), https://IP:9090 접속; 방화벽·사용자·네트워크·VM·업데이트·컨테이너·로그·모니터링.
 
-## 단원 3: 파일 접근 권한 관리
-- 01 파일 접근 권한
-- 02 기호를 이용한 파일 접근 권한 변경
-- 03 숫자를 이용한 파일 접근 권한 변경
-- 04 기본 접근 권한 설정
-- 05 특수 접근 권한 설정
-
-## 단원 4: 문서 편집
-- 01 리눅스의 문서 편집기
-- 02 vi 사용법
-- 03 vi 환경 설정
-
-## 단원 5: 셸 사용법
-
-
-## 단원 6: 프로세스 관리
-
-
-## 단원 7: 리눅스의 부팅과 종료
-
-
-## 단원 8: 소프트웨어 관리
-
-
-## 단원 9: 사용자 관리
-
-
-## 단원 10: 파일 시스템과 디스크 관리
-
-
-## 단원 11: 네트워크 설정
-
-
-## 단원 12: 원격 접속과 FTP
-
-
-## 단원 13: DB 서버와 웹 서버
-- 01 데이터베이스
-- 02 MariaDB 설치와 사용
-
-## 단원 14: NFS와 삼바
-
-
-## 단원 15: 리눅스 보안의 기초
-
-
-## 단원 16: 가상화 서비스
-
-
-## 단원 17: 종합 실습 및 개별 프로젝트
-
+**컨테이너 가상화 실습**
+- 도커: 컨테이너 플랫폼; 도커 이미지(앱+런타임 패키지), 도커 허브(hub.docker.com).
+- 도커 설치: CentOS 저장소 추가, dnf docker-ce, systemctl docker 활성화/시작, docker --version 확인.
+- 도커 테스트: docker run hello-world(동작 확인), docker pull nginx(이미지 다운), docker run -p 9511:80 nginx(포트 매핑).
+- 도커 명령: docker images(이미지 목록), docker ps(실행 컨테이너), pull/run으로 배포.
+- Conda: Python 환경 관리; Miniconda 다운로드·설치, conda --version; conda create -n yolo_env python=3.10, activate/deactivate, pip ultralytics.
+- YOLO 예제: detection.py로 YOLOv8 객체 감지(test.jpg → result_output.jpg), 클래스·신뢰도 출력.
 
 </details>
