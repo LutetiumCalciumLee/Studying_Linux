@@ -1,4 +1,3 @@
-
 <details> <summary>ENG (English Version)</summary>
 
 ## Chapter 7 – Linux Boot and Shutdown
