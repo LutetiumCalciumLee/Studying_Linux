@@ -1,141 +1,237 @@
 <details>
 <summary>ENG (English Version)</summary>
 
-# Linux Programming
+## **1. What is Linux?**
+- Open-source UNIX-like OS kernel, invented by Linus Torvalds in 1991.
+- Popular for flexibility, stability, and being free.
+- Used in servers, desktops, embedded systems.
 
-## Unit 1: Linux Installation and Basic Usage
-- 01 Operating System Overview
-- 02 Linux Basics
-- 03 Building a Linux Practice Environment
-- 04 Rocky Linux Window Basic Usage
-- 05 Linux Command Usage
+## **2. Advantages of Linux**
+- Open-source & free: Cost-efficient and customizable.
+- Stability & Security: Rarely crashes, virus-resistant.
+- Multitasking and multi-user supported.
+- Runs on various hardware (low to high spec).
 
-## Unit 2: Directory and File Usage
-- 01 Linux Files and Directories
-- 02 Directory-Related Commands
-- 03 File-Related Commands
+## **3. Disadvantages of Linux**
+- Steep learning curve for beginners.
+- Compatibility issues with some commercial software.
+- Requires more command-line interaction.
 
-## Unit 3: File Access Permission Management
-- 01 File Access Permissions
-- 02 Changing File Access Permissions Using Symbols
-- 03 Changing File Access Permissions Using Numbers
-- 04 Basic Access Permission Settings
-- 05 Special Access Permission Settings
+## **4. Linux Architecture**
+- **Kernel**: Core managing CPU, memory, devices.
+- **Shell**: Interface between user and kernel.
+- **File System**: Hierarchical, root directory "/".
+- **Utilities**: Various command-line tools (e.g., ls, cp, mv).
 
-## Unit 4: Document Editing
-- 01 Linux Document Editors
-- 02 Vi Usage
-- 03 Vi Environment Settings
+## **5. Linux File System**
+- Everything is a file.
+- Hierarchical structure starting from `/`.
+- Important directories:
+  - `/bin`: Essential binaries
+  - `/etc`: Config files
+  - `/home`: User directories
+  - `/dev`: Devices
+  - `/var`: Variable data
+  - `/tmp`: Temporary files
 
-## Unit 5: Shell Usage
+## **6. Basic Linux Commands**
+- **File operations**: `ls`, `cd`, `cp`, `mv`, `rm`, `touch`, `mkdir`
+- **Permissions**: `chmod`, `chown`, `umask`
+- **Processes**: `ps`, `top`, `kill`, `nice`
+- **Package Management**: `apt`, `yum`, `dpkg`, `rpm`
+- **Others**: `man`, `echo`, `cat`, `grep`, `find`
 
+## **7. File Permissions**
+- Three types: read (r), write (w), execute (x)
+- Assigned to: owner, group, others
+- Numeric notation: `chmod 755` etc.
+- Symbolic: `chmod u+x file`
 
-## Unit 6: Process Management
+## **8. Linux Shell**
+- Command-line interpreter: bash, sh, zsh
+- Executes commands and scripts.
+- Supports variables, control structures (if, for, while).
+- Allows automation via shell scripting.
 
+## **9. Shell Scripting Basics**
+- Start with `#!/bin/bash`
+- Use variables (`VAR=value`), echo, conditionals.
+- Control flow: if/else, loops (for, while).
+- Example:
+```bash
+#!/bin/bash
+for i in {1..5}
+do
+  echo "Line $i"
+done
+````
 
-## Unit 7: Linux Boot and Shutdown
+## **10. Package Management**
 
+* **Debian-based**: `apt`, `dpkg`
+* **Red Hat-based**: `yum`, `dnf`, `rpm`
+* Install, update, remove software.
 
-## Unit 8: Software Management
+## **11. Process Management**
 
+* `ps`, `top`, `kill`, `nice`, `renice`
+* Background (`&`) and foreground processes.
+* `jobs`, `fg`, `bg` for job control.
 
-## Unit 9: User Management
+## **12. Networking in Linux**
 
+* `ifconfig`, `ip`, `ping`, `netstat`, `ss`
+* Configuration via `/etc/network/` or `nmcli`
+* SSH: `ssh user@host`, `scp`, `rsync`
 
-## Unit 10: File System and Disk Management
+## **13. System Monitoring & Logs**
 
+* Monitor: `top`, `htop`, `free`, `df`, `du`
+* Logs: `/var/log/` (e.g., syslog, auth.log)
+* `journalctl` for systemd logs
 
-## Unit 11: Network Configuration
+## **14. User & Group Management**
 
+* Add/remove users: `adduser`, `deluser`
+* Set passwords: `passwd`
+* Groups: `groupadd`, `usermod -aG`
+* File ownership: `chown`
 
-## Unit 12: Remote Access and FTP
+## **15. Crontab & Scheduling**
 
+* Automate tasks: `crontab -e`
+* Syntax: `* * * * * command`
 
-## Unit 13: Database Server and Web Server
-- 01 Database
-- 02 MariaDB Installation and Usage
+  * Minute, Hour, Day, Month, Weekday
+* Use for backups, updates, etc.
 
-## Unit 14: NFS and Samba
+## **16. Important Configuration Files**
 
-
-## Unit 15: Linux Security Basics
-
-
-## Unit 16: Virtualization Services
-
-
-## Unit 17: Comprehensive Practice and Individual Projects
-
+* `/etc/passwd`, `/etc/shadow`: user info
+* `/etc/fstab`: disk mounting
+* `/etc/hosts`: local hostname mapping
+* `/etc/crontab`: system-wide cron jobs
 
 </details>
 
 <details>
 <summary>KOR (한국어 버전)</summary>
 
-# 리눅스 프로그래밍
+## **1. 리눅스란?**
 
-## 단원 1: 리눅스 설치와 기본 사용법
-- 01 운영체제 개요
-- 02 리눅스 기초
-- 03 리눅스 실습 환경 구축
-- 04 리눅스 윈도 기본 사용법
-- 05 리눅스 명령 사용법
+* 1991년 리누스 토발즈가 개발한 오픈소스 UNIX 계열 운영체제 커널.
+* 무료, 유연성, 안정성이 장점.
+* 서버, 데스크탑, 임베디드 장치 등에 사용.
 
-## 단원 2: 디렉터리와 파일 사용법
-- 01 리눅스의 파일과 디렉터리
-- 02 디렉터리 관련 명령
-- 03 파일 관련 명령
+## **2. 리눅스의 장점**
 
-## 단원 3: 파일 접근 권한 관리
-- 01 파일 접근 권한
-- 02 기호를 이용한 파일 접근 권한 변경
-- 03 숫자를 이용한 파일 접근 권한 변경
-- 04 기본 접근 권한 설정
-- 05 특수 접근 권한 설정
+* 오픈소스 및 무료.
+* 뛰어난 안정성과 보안성.
+* 멀티태스킹 및 다중 사용자 지원.
+* 저사양부터 고사양까지 폭넓은 호환성.
 
-## 단원 4: 문서 편집
-- 01 리눅스의 문서 편집기
-- 02 vi 사용법
-- 03 vi 환경 설정
+## **3. 리눅스의 단점**
 
-## 단원 5: 셸 사용법
+* 초보자에게는 진입장벽 높음.
+* 상용 소프트웨어와의 호환성 이슈.
+* 터미널 기반 명령어 필요.
 
+## **4. 리눅스 구조**
 
-## 단원 6: 프로세스 관리
+* **커널**: 핵심 기능(CPU, 메모리, 장치 관리).
+* **셸(Shell)**: 사용자와 커널 사이 인터페이스.
+* **파일 시스템**: 계층 구조, 루트는 `/`.
+* **유틸리티**: 다양한 명령어 도구.
 
+## **5. 파일 시스템 구조**
 
-## 단원 7: 리눅스의 부팅과 종료
+* 모든 것이 파일로 취급.
+* 루트(`/`)에서 시작되는 계층적 구조.
+* 주요 디렉토리:
 
+  * `/bin`: 필수 명령어
+  * `/etc`: 설정 파일
+  * `/home`: 사용자 폴더
+  * `/dev`: 장치 파일
+  * `/var`: 로그 등 가변 데이터
+  * `/tmp`: 임시 파일
 
-## 단원 8: 소프트웨어 관리
+## **6. 기본 명령어**
 
+* **파일 관련**: `ls`, `cd`, `cp`, `mv`, `rm`, `touch`, `mkdir`
+* **권한 관련**: `chmod`, `chown`, `umask`
+* **프로세스 관리**: `ps`, `top`, `kill`, `nice`
+* **패키지 관리**: `apt`, `yum`, `dpkg`, `rpm`
+* **기타**: `man`, `echo`, `cat`, `grep`, `find`
 
-## 단원 9: 사용자 관리
+## **7. 파일 권한**
 
+* 읽기(r), 쓰기(w), 실행(x)
+* 사용자, 그룹, 기타 사용자로 구분.
+* 숫자 표현: `chmod 755`
+* 기호 표현: `chmod u+x 파일명`
 
-## 단원 10: 파일 시스템과 디스크 관리
+## **8. 셸(Shell)**
 
+* bash, sh, zsh 등 명령어 인터프리터.
+* 명령어 실행, 변수 사용, 제어구조 지원.
+* 셸 스크립트를 통해 자동화 가능.
 
-## 단원 11: 네트워크 설정
+## **9. 셸 스크립트 기본**
 
+* `#!/bin/bash`로 시작.
+* 변수, 조건문, 반복문 사용.
+* 예시:
 
-## 단원 12: 원격 접속과 FTP
+```bash
+#!/bin/bash
+for i in {1..5}
+do
+  echo "Line $i"
+done
+```
 
+## **10. 패키지 관리**
 
-## 단원 13: DB 서버와 웹 서버
-- 01 데이터베이스
-- 02 MariaDB 설치와 사용
+* **Debian 계열**: `apt`, `dpkg`
+* **Red Hat 계열**: `yum`, `dnf`, `rpm`
+* 설치, 삭제, 업데이트 기능 제공.
 
-## 단원 14: NFS와 삼바
+## **11. 프로세스 관리**
 
+* `ps`, `top`, `kill`, `nice`, `renice`
+* 백그라운드/포그라운드 작업 제어: `&`, `jobs`, `fg`, `bg`
 
-## 단원 15: 리눅스 보안의 기초
+## **12. 네트워크 명령어**
 
+* `ifconfig`, `ip`, `ping`, `netstat`, `ss`
+* 설정: `/etc/network/`, `nmcli`
+* SSH: `ssh`, `scp`, `rsync`로 원격 접속/복사
 
-## 단원 16: 가상화 서비스
+## **13. 시스템 모니터링 및 로그**
 
+* 모니터링: `top`, `htop`, `free`, `df`, `du`
+* 로그 위치: `/var/log/`
+* `journalctl`: systemd 기반 로그 확인
 
-## 단원 17: 종합 실습 및 개별 프로젝트
+## **14. 사용자 및 그룹 관리**
 
+* 사용자 추가/삭제: `adduser`, `deluser`
+* 비밀번호 설정: `passwd`
+* 그룹 관리: `groupadd`, `usermod -aG`
+* 소유권 변경: `chown`
+
+## **15. 작업 스케줄링 (Crontab)**
+
+* `crontab -e`로 자동 작업 설정
+* 형식: `* * * * * 명령어` (분 시 일 월 요일)
+* 주기적 백업, 자동 실행에 사용
+
+## **16. 주요 설정 파일**
+
+* `/etc/passwd`, `/etc/shadow`: 사용자 정보
+* `/etc/fstab`: 디스크 마운트 정보
+* `/etc/hosts`: 호스트 이름 매핑
+* `/etc/crontab`: 시스템 전체 예약 작업
 
 </details>
