@@ -84,4 +84,4 @@
 - GRUB: 리눅스의 표준 부트 로더로 OS 선택 메뉴와 커널 로딩 기능 제공.
 - 부팅 순서: BIOS → MBR → 부트 로더 → 커널 → systemd → 서비스 → 로그인.
 
-</details></parameter>
+</details>
