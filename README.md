@@ -55,7 +55,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 2장 – 디렉터리와 파일 사용법
 
