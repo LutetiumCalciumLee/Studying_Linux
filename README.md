@@ -29,7 +29,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 15장 – 리눅스 보안의 기초
 
