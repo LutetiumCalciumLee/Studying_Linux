@@ -36,7 +36,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 1장 – 리눅스 설치와 기본 사용법
 
