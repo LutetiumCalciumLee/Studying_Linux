@@ -42,7 +42,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 7장 – 리눅스의 부팅과 종료
 
