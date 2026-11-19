@@ -39,7 +39,7 @@ This repository contains my notes from studying Linux as part of the AI Software
 
 </details>
 
-<details>
+<details open>
 <summary>KOR (한국어 버전)</summary>
 
 # Linux
