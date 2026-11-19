@@ -36,7 +36,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 13장 – DB 서버와 웹 서버
 
