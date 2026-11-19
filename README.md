@@ -39,7 +39,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 3장 – 파일 접근 권한 관리
 
