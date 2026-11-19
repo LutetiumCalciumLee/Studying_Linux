@@ -26,7 +26,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 14장 – NFS와 삼바
 
