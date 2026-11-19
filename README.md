@@ -41,7 +41,7 @@
 
 </details>
 
-<details> <summary>KOR (한국어 버전)</summary>
+<details open> <summary>KOR (한국어 버전)</summary>
 
 ## 10장 – 파일 시스템과 디스크 관리
 
